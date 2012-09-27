@@ -1,8 +1,9 @@
 var Canvas = require('canvas');
+var Url = require('url');
 
 module.exports = function(url){
 	return function(req, res, next){
-		if(req.url != url)
+		if(Url.parse(req.url).pathname != url)
 			return next();
 		
 		var canvas = new Canvas(250, 150);
